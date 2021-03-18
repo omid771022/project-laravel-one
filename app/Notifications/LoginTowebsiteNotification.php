@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class LoginTowebsiteNotification extends Notification
+class LoginTowebsiteNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -41,9 +41,8 @@ class LoginTowebsiteNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        ->subject('you are  login')
+->view('email.login-to-website');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\ActiveCode;
 use Ghasedak\GhasedakApi;
 use Illuminate\Http\Request;
 use MohsenBostan\GhasedakSms;
+use Illuminate\Validation\Rule;
 use App\Notifications\ActiveCodeNotification;
 
 class ProfileController extends Controller
@@ -27,7 +28,8 @@ class ProfileController extends Controller
     {
         $data = $request->validate([
             'type' => 'required|in:sms,off',
-            'phone' => 'required_unless:type,off|unique:users,phone_number'
+            'phone' => 'required_unless:type,off|unique:users,phone_number',
+            'phone' => ['required_unless:type,off' , Rule::unique('users' , 'phone_number')->ignore($request->user()->id)]
         ]);
 
         if($data['type'] === 'sms') {

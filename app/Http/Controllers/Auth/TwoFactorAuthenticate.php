@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\ActiveCode;
+use App\Notifications\LoginTowebsiteNotification;
 use Illuminate\Http\Request;
 use MohsenBostan\GhasedakSms;
 
@@ -36,9 +37,12 @@ GhasedakSms::sendSingleSMS("{$cavtive}  کاربر گرامی  رمز یک با�
                 $request->session()->push('auth.using_sms' , true);
             }
 
+
             return redirect(route('2fa.token'));
         }
 
+        
+$user->notify(new LoginTowebsiteNotification());
         return false;
     }
 }
