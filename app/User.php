@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','two_factor_type' , 'phone_number'
+        'name', 'email', 'password','two_factor_type' , 'phone_number','is_superuser','is_staff'
     ];
 
     /**
@@ -74,4 +74,13 @@ public function  sendEmailVerificationNotification()
     {
         return $this->two_factor_type !== 'off';
     }
+public function isSuperUser(){
+return  $this->is_superuser;
+}
+
+public function isStaffUser(){
+return $this->is_staff;
+}
+
+
 }

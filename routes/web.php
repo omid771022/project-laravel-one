@@ -11,7 +11,6 @@
 |
 */
 
-use App\ActiveCode;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,3 +38,16 @@ Route::middleware('auth')->group(function() {
     Route::post('profile/twofacto/phone' , 'ProfileController@postPhoneVerify');
 });
 
+
+
+Route::group(['prefix'=>'admin', 'middleware' => ['auth '=> 'auth.admin' ]], function(){
+Route::get('/', 'Admin\AdminController@index');
+Route::get('/index', 'Admin\UserController@ShowUser')->name('indexpanel');
+Route::get('/user/create', 'Admin\UserController@create')->name('admin.users.create');
+Route::post('/user/store', 'Admin\UserController@store')->name('admin.users.store');
+ Route::get('/user/edit/{id}', 'Admin\UserController@edit')->name('admin.users.edit');
+Route::post('/user/update/{id}','Admin\UserController@update')->name('admin.users.update');
+Route::get('/user/delete/{id}','Admin\UserController@delete')->name('admin.users.delete');
+
+
+});
