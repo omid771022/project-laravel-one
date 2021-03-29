@@ -4,6 +4,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateRequest;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -51,9 +52,20 @@ class UserController extends Controller
     {
     
            $userid=User::where('id', $id)->first();
-        return view('admin.users.edit' , compact('userid'));
-    }
 
+                 // if(Gate::allows('edit-user', $userid)){
+                // return view('admin.users.edit' , compact('userid'));
+               //   }
+    
+      //  abort(403);
+
+//  if(Gate::denies('edit-user', $userid)){
+//     abort(403);
+//  }
+
+$this->authorize('edit-user', $userid);
+ return view('admin.users.edit' , compact('userid'));
+    }
     public function update(UpdateRequest $request, $id)
     {
         // $data = $request->validate([

@@ -50,10 +50,10 @@
                             <td><span class="badge badge-danger">غیرفعال</span></td>
                             @endif
                             <td>
-                                <a href="{{ route('admin.users.delete' ,$user['id'] ) }}"
-                                    class="btn btn-sm btn-danger">حذف</a>
-                                <a href="{{ route('admin.users.edit' ,$user['id'] ) }}"
-                                    class="btn btn-sm btn-primary">ویرایش</a>
+                                <a href="{{ route('admin.users.delete' ,$user['id'] ) }}" class="btn btn-sm btn-danger">حذف</a>
+                                @can('edit', $user)
+                                <a href="{{ route('admin.users.edit' ,$user['id'] ) }}" class="btn btn-sm btn-primary">ویرایش</a>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
