@@ -39,42 +39,24 @@
                                     <p>صفحه    index</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p> کاربران </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>داشبورد سوم</p>
-                                </a>
-                            </li>
+               
+                           
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                            <i class="nav-icon fa fa-th"></i>
-                            <p>
-                                ویجت‌ها
-                                <span class="right badge badge-danger">جدید</span>
-                            </p>
-                        </a>
-                    </li>
+     
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-pie-chart"></i>
                             <p>
-                                چارت‌ها
+                                  سطح دسترسی 
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <a href="{{route('permission.index')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>نمودار ChartJS</p>
+                                    <p>تعیین  سطح دسترسی </p>
                                 </a>
                             </li>
                             <li class="nav-item">

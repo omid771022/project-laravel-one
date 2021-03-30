@@ -51,3 +51,12 @@ Route::get('/user/delete/{id}','Admin\UserController@delete')->name('admin.users
 
 
 });
+Route::group(['prefix'=>'permission']   ,function () {
+    Route::get('/', 'PermissionController@index')->name('permission.index');
+    Route::get('/create', 'PermissionController@create')->name('admin.permissions.create');
+    Route::get('/destroy/{id}', 'Admin\PermissionController@destroy')->name('admin.permissions.destroy');
+    Route::get('/user/edit/{id}', 'Admin\PermissionController@edit')->name('admin.permissions.edit');
+    Route::post('/user/update/{id}','Admin\PermissionController@update')->name('admin.permissions.update');
+
+    Route::post('/user/store', 'Admin\PermissionController@store')->name('admin.permission.store');
+});
